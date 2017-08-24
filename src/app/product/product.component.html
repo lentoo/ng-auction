@@ -1,0 +1,22 @@
+<div class="row" style="margin-top:10px">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="请输入商品名称"  [formControl]="formControl" />
+    </div>
+  </div>
+  <div class="col-sm-4 col-md-4 col-lg-4" *ngFor="let product of products | filterProduct : 'name' : keyword"> 
+    <div class="thumbnail">
+      <img src="http://via.placeholder.com/320x150" alt="...">
+      <div class="caption">
+        <a [routerLink]="['/product/'+product.id]">
+          <h4 class="pull-right">{{product.price}} </h4>
+          <h4>{{product.name}}</h4>
+        </a>
+        <p>{{product.dec}}</p>
+        <div>
+          <app-star [star]="product.star"></app-star>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

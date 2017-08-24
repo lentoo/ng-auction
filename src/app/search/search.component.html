@@ -1,0 +1,27 @@
+<form [formGroup]="formModel" (ngSubmit)="onSearch()" novalidate>
+  <div class="form-group" [class.has-error]="formModel.hasError('minlength','title')">
+    <label for="productName">商品名称</label>
+    <input type="text" class="form-control" id="productName" placeholder="商品名称" formControlName="title" />
+    <span class="help-block" [class.hidden]="!formModel.hasError('minlength','title')">
+      请至少输入3个字
+    </span>
+  </div>
+
+  <div class="form-group" [class.has-error]="formModel.hasError('ValidatorPrice','price')">
+    <label for="txtprice">商品价格</label>
+    <input type="number" class="form-control" id="txtprice" placeholder="商品价格" formControlName="price"/>
+    <span class="help-block" [class.hidden]="!formModel.hasError('ValidatorPrice','price')">
+        请输入正数
+      </span>
+  </div>
+  <div class="form-group">
+    <label for="productCategory">商品类别</label>
+    <select class="form-control" id="productCategory" >
+      <option value="-1">全部类别</option>
+      <option *ngFor="let item of categorys" value="item">{{item}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default btn-primary btn-block">查询</button>
+  </div>
+</form>
